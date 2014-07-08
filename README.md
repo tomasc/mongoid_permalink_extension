@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add to Mongoid models as:
+
+    field :permalink, type: MongoidPermalinkExtension::Permalink
 
 ## Contributing
 
