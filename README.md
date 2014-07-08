@@ -1,6 +1,13 @@
 # MongoidPermalinkExtension
 
-TODO: Write a gem description
+It:
+* converts to string
+* converts spaces to hyphens
+* converts to camel case
+* converts all dashes to hyphens
+* remove non-alphanumeric characters
+* preserves accented characters
+* produces nice slugs
 
 ## Installation
 
