@@ -1,13 +1,12 @@
-# MongoidPermalinkExtension
+# Mongoid Permalink Extension
 
-It:
-* converts to string
+A [Mongoid](https://github.com/mongoid/mongoid) field extension that stores any String as a permalink slug.
+
 * converts spaces to hyphens
 * converts to camel case
 * converts all dashes to hyphens
 * remove non-alphanumeric characters
-* preserves accented characters
-* produces nice slugs
+* removes accents
 
 ## Installation
 
