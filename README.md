@@ -1,6 +1,8 @@
 # Mongoid Permalink Extension
 
-A [Mongoid](https://github.com/mongoid/mongoid) field extension that stores String as a permalink slug.
+[![Build Status](https://travis-ci.org/tomasc/mongoid_permalink_extension.svg)](https://travis-ci.org/tomasc/mongoid_permalink_extension) [![Coverage Status](https://img.shields.io/coveralls/tomasc/mongoid_permalink_extension.svg)](https://coveralls.io/r/tomasc/mongoid_permalink_extension)
+
+A [Mongoid](https://github.com/mongoid/mongoid) field extension that stores any String as a permalink slug.
 
 * converts spaces to hyphens
 * converts to camel case
