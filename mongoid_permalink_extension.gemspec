@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = MongoidPermalinkExtension::VERSION
   spec.authors       = ["Tomas Celizna"]
   spec.email         = ["tomas.celizna@gmail.com"]
-  spec.description   = %q{Stores strings as URL slugs}
-  spec.summary       = %q{Stores strings as URL slugs}
+  spec.description   = %q{Custom field type for Mongoid that automatically converts strings to URL slugs.}
+  spec.summary       = %q{Custom field type for Mongoid that automatically converts strings to URL slugs.}
   spec.homepage      = "https://github.com/tomasc/mongoid_permalink_extension"
   spec.license       = "MIT"
 
