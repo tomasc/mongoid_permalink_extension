@@ -1,3 +1,5 @@
+# coding: utf-8
+
 require 'stringex'
 
 module MongoidPermalinkExtension
@@ -12,7 +14,7 @@ module MongoidPermalinkExtension
       def mongoize value
         return if value.nil?
         value.to_s.
-          gsub(/–|—/, '-').
+          gsub(/[–—]/, '-').
           gsub(/\s+/, '-').
           gsub(/[^\p{Alnum} -]/, '').
           gsub(/\b\w/){ $&.upcase }.
