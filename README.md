@@ -1,6 +1,6 @@
 # Mongoid Permalink Extension
 
-[![Build Status](https://travis-ci.org/tomasc/mongoid_permalink_extension.svg)](https://travis-ci.org/tomasc/mongoid_permalink_extension) [![Coverage Status](https://img.shields.io/coveralls/tomasc/mongoid_permalink_extension.svg)](https://coveralls.io/r/tomasc/mongoid_permalink_extension)
+[![Build Status](https://travis-ci.org/tomasc/mongoid_permalink_extension.svg)](https://travis-ci.org/tomasc/mongoid_permalink_extension) [![Gem Version](https://badge.fury.io/rb/mongoid_permalink_extension.svg)](http://badge.fury.io/rb/mongoid_permalink_extension) [![Coverage Status](https://img.shields.io/coveralls/tomasc/mongoid_permalink_extension.svg)](https://coveralls.io/r/tomasc/mongoid_permalink_extension)
 
 A [Mongoid](https://github.com/mongoid/mongoid) field extension that stores any String as a permalink slug.
 
