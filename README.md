@@ -28,11 +28,15 @@ Or install it yourself as:
 
 Add to Mongoid models as:
 
-    field :permalink, type: MongoidPermalinkExtension::Permalink
+```ruby
+field :permalink, type: MongoidPermalinkExtension::Permalink
+```
     
 Produces slugs in the form of:
 
     A-Hard-Days-Night
+
+See tests for more examples.
 
 ## Contributing
 
