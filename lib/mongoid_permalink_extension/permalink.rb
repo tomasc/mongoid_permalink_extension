@@ -15,8 +15,8 @@ module MongoidPermalinkExtension
         return if value.nil?
         value.to_s.
           gsub(/[–—]/, '-').
-          gsub(/\s+/, '-').
           gsub(/[^\p{Alnum} -]/, '').
+          gsub(/\s+/, '-').
           gsub(/\b\w/){ $&.upcase }.
           to_ascii
       end

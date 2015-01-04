@@ -55,6 +55,7 @@ module MongoidPermalinkExtension
       it 'produces nice slugs' do
         MongoidPermalinkExtension::Permalink.mongoize('Future Vocabularies?').must_equal 'Future-Vocabularies'
         MongoidPermalinkExtension::Permalink.mongoize('2011 space odyssey').must_equal '2011-Space-Odyssey'
+        MongoidPermalinkExtension::Permalink.mongoize('A permalink with & in it').must_equal 'A-Permalink-With-In-It'
       end
     end
 
