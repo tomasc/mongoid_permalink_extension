@@ -3,17 +3,17 @@
 require 'test_helper'
 
 # ---------------------------------------------------------------------
-  
+
 class MongoidPermalinkExtensionTest
   include Mongoid::Document
   field :permalink, type: MongoidPermalinkExtension::Permalink
 end
 
 # ---------------------------------------------------------------------
-  
+
 module MongoidPermalinkExtension
   describe Permalink do
-    
+
     subject { MongoidPermalinkExtensionTest.new }
 
     describe '.demongoize' do
@@ -37,6 +37,9 @@ module MongoidPermalinkExtension
         MongoidPermalinkExtension::Permalink.mongoize(" ").must_equal '-'
         MongoidPermalinkExtension::Permalink.mongoize("    ").must_equal '-'
       end
+      it 'converts slashes to hyphens' do
+        MongoidPermalinkExtension::Permalink.mongoize("/").must_equal '-'
+      end
       it 'converts to camel case' do
         MongoidPermalinkExtension::Permalink.mongoize("hello hello").wont_include 'h'
       end
@@ -45,7 +48,7 @@ module MongoidPermalinkExtension
         MongoidPermalinkExtension::Permalink.mongoize("—").must_equal '-'
       end
       it 'remove non-alphanumeric characters' do
-        %w(?!@#$%^&*()+=/.,;<>[]).shuffle.each do |i|
+        %w(?!@#$%^&*()+=.,;<>[]).shuffle.each do |i|
           MongoidPermalinkExtension::Permalink.mongoize(i).wont_include i
         end
       end
