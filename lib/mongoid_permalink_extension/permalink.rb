@@ -14,6 +14,7 @@ module MongoidPermalinkExtension
       def mongoize value
         return if value.nil?
         value.to_s.
+          gsub(/\//, '-').
           gsub(/[–—]/, '-').
           gsub(/[^\p{Alnum} -]/, '').
           gsub(/\s+/, '-').
