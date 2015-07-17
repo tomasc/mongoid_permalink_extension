@@ -43,6 +43,9 @@ describe MongoidPermalinkExtension::Permalink do
     it 'converts to camel case' do
       MongoidPermalinkExtension::Permalink.mongoize("hello hello").wont_include 'h'
     end
+    it 'adds spaces to camel case' do
+      MongoidPermalinkExtension::Permalink.mongoize("CamelCase").must_equal 'Camel-Case'
+    end
     it 'converts all dashes to hyphens' do
       MongoidPermalinkExtension::Permalink.mongoize("–").must_equal '-'
       MongoidPermalinkExtension::Permalink.mongoize("—").must_equal '-'
