@@ -42,13 +42,20 @@ describe MongoidPermalinkExtension::Permalink do
     end
     it 'converts to camel case' do
       MongoidPermalinkExtension::Permalink.mongoize("hello hello").wont_include 'h'
+      MongoidPermalinkExtension::Permalink.mongoize("hello hello").must_equal 'Hello-Hello'
     end
     it 'adds spaces to camel case' do
       MongoidPermalinkExtension::Permalink.mongoize("CamelCase").must_equal 'Camel-Case'
     end
+    it 'preserves dashes as separators' do
+      MongoidPermalinkExtension::Permalink.mongoize("Camel-Case").must_equal 'Camel-Case'
+      MongoidPermalinkExtension::Permalink.mongoize("Camel--Case").must_equal 'Camel-Case'
+    end
     it 'converts all dashes to hyphens' do
       MongoidPermalinkExtension::Permalink.mongoize("–").must_equal '-'
+      MongoidPermalinkExtension::Permalink.mongoize("----–").must_equal '-'
       MongoidPermalinkExtension::Permalink.mongoize("—").must_equal '-'
+      MongoidPermalinkExtension::Permalink.mongoize("—––––––").must_equal '-'
     end
     it 'remove non-alphanumeric characters' do
       %w(?!@#$%^&*()+=.,;<>[]).shuffle.each do |i|
