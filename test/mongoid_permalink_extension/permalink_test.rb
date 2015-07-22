@@ -47,6 +47,10 @@ describe MongoidPermalinkExtension::Permalink do
     it 'adds spaces to camel case' do
       MongoidPermalinkExtension::Permalink.mongoize("CamelCase").must_equal 'Camel-Case'
     end
+    it 'preserves ABC' do
+      MongoidPermalinkExtension::Permalink.mongoize("ABC Demo").must_equal 'ABC-Demo'
+      # MongoidPermalinkExtension::Permalink.mongoize("ABCDeMo").must_equal 'ABC-De-Mo'
+    end
     it 'preserves dashes as separators' do
       MongoidPermalinkExtension::Permalink.mongoize("Camel-Case").must_equal 'Camel-Case'
       MongoidPermalinkExtension::Permalink.mongoize("Camel--Case").must_equal 'Camel-Case'
