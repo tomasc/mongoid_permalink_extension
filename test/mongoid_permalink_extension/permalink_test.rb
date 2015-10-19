@@ -34,11 +34,11 @@ describe MongoidPermalinkExtension::Permalink do
       MongoidPermalinkExtension::Permalink.mongoize(nil).must_be_nil
     end
     it 'converts spaces to hyphens' do
-      MongoidPermalinkExtension::Permalink.mongoize(" ").must_equal '-'
-      MongoidPermalinkExtension::Permalink.mongoize("    ").must_equal '-'
+      MongoidPermalinkExtension::Permalink.mongoize("A B").must_equal 'A-B'
+      MongoidPermalinkExtension::Permalink.mongoize("A    B").must_equal 'A-B'
     end
     it 'converts slashes to hyphens' do
-      MongoidPermalinkExtension::Permalink.mongoize("/").must_equal '-'
+      MongoidPermalinkExtension::Permalink.mongoize("A/B").must_equal 'A-B'
     end
     it 'converts to camel case' do
       MongoidPermalinkExtension::Permalink.mongoize("hello hello").wont_include 'h'
@@ -56,15 +56,19 @@ describe MongoidPermalinkExtension::Permalink do
       MongoidPermalinkExtension::Permalink.mongoize("Camel--Case").must_equal 'Camel-Case'
     end
     it 'converts all dashes to hyphens' do
-      MongoidPermalinkExtension::Permalink.mongoize("–").must_equal '-'
-      MongoidPermalinkExtension::Permalink.mongoize("----–").must_equal '-'
-      MongoidPermalinkExtension::Permalink.mongoize("—").must_equal '-'
-      MongoidPermalinkExtension::Permalink.mongoize("—––––––").must_equal '-'
+      MongoidPermalinkExtension::Permalink.mongoize("A–Z").must_equal 'A-Z'
+      MongoidPermalinkExtension::Permalink.mongoize("A----–Z").must_equal 'A-Z'
+      MongoidPermalinkExtension::Permalink.mongoize("A—Z").must_equal 'A-Z'
+      MongoidPermalinkExtension::Permalink.mongoize("A—––––––Z").must_equal 'A-Z'
     end
     it 'remove non-alphanumeric characters' do
-      %w(?!@#$%^&*()+=.,;<>[]).shuffle.each do |i|
+      %w(?!@#$%^&*()+=.,;<>[]“”).shuffle.each do |i|
         MongoidPermalinkExtension::Permalink.mongoize(i).wont_include i
       end
+    end
+    it 'does not start with a hyphen' do
+      MongoidPermalinkExtension::Permalink.mongoize("“Yes” to a Historic Moment").must_equal "Yes-To-A-Historic-Moment"
+      MongoidPermalinkExtension::Permalink.mongoize("¿Yes?").must_equal "Yes"
     end
     it 'preserves accented characters' do
       MongoidPermalinkExtension::Permalink.mongoize('Bienále Brno Česká republika').must_equal 'Bienale-Brno-Ceska-Republika'

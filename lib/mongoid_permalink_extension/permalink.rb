@@ -20,6 +20,7 @@ module MongoidPermalinkExtension
           gsub(/[^\p{Alnum} -]/, '').
           gsub(/\s+/, '-').
           gsub(/[-]+/, '-').
+          gsub(/\A\-/, '').
           gsub(/\b\w/){ $&.upcase }.
           to_ascii
       end
