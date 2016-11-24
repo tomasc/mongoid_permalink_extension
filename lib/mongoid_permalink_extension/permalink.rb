@@ -12,7 +12,7 @@ module MongoidPermalinkExtension
       end
 
       def mongoize value
-        return if value.nil?
+        return if value.nil? # FIXME: this way we can never set the value to nil
         value.to_s.
           gsub(/([^[:upper:]](?=[[:upper:]]))|([a-z](?=\d+))/, '\1\2-').
           gsub(/\//, '-').
